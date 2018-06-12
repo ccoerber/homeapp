@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>{{ loc_name }}</h4>
+{% if device_list %}
+	{% for dev in device_list %}
+		<a href="{% url 'sensor' dev.id %}">{{ dev.name_text }}</a>: {{ dev.type_list }} <br />
+	{% endfor %}
+{% else %}
+	This location has no devices.
+{% endif %}
+{% endblock content %}
