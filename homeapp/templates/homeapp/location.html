@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>{{ loc_name }}</h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>{{ loc_name }}</h4>
+        </div>
+    </div>
+</div> 
 {% if device_list %}
 	{% for dev in device_list %}
-		<a href="{% url 'sensor' dev.id %}">{{ dev.name_text }}</a>: {{ dev.type_list }} <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{% url "sensor" dev.id %}">{{ dev.name_text }}</a>
+		</div>
+		<div class="col-md-10">
+                    {{ dev.type_list }}
+		</div>
+            </div>
 	{% endfor %}
 {% else %}
 	This location has no devices.
 {% endif %}
+</div>
 {% endblock content %}
